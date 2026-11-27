@@ -120,11 +120,14 @@ function renderComps() {
     if (!e) {
       e = { g: document.createElementNS(NS, 'g'), gt: document.createElementNS(NS, 'g'), html: '', th: '', tr: '' };
       e.g.dataset.c = c.id;
+      e.g.setAttribute('role', 'group');
       cache.set(c.id, e); Lc.append(e.g); Lt.append(e.gt);
     }
     const d = DEFS[c.type];
     let html = d.draw(c, d);
     if (c._noEarth) html += `<g><title>Masse non reliée à la terre (PE)</title><circle class="noearthb" cx="${d.w - 2}" cy="-2" r="10"/><text class="noearth" x="${d.w - 2}" y="2" text-anchor="middle">PE!</text></g>`;
+    const aria = `${c.label} – ${d.name}`;
+    if (e.g.getAttribute('aria-label') !== aria) e.g.setAttribute('aria-label', aria);
     if (html !== e.html) { e.g.innerHTML = html; e.html = html; }
     const cls = 'comp' + (sel && sel.kind === 'comp' && sel.id === c.id ? ' sel' : '');
     if (e.g.getAttribute('class') !== cls) e.g.setAttribute('class', cls);
@@ -134,7 +137,7 @@ function renderComps() {
     for (const t of d.terminals) {
       const k = c.id + ':' + t.id;
       const tc = 'term' + (t.kind ? ' k-' + t.kind : '') + (wired.has(k) ? ' wired' : '') + (pending === k ? ' pending' : '');
-      th += `<g class="${tc}" data-t="${k}" transform="translate(${t.x},${t.y})"><circle class="thit" r="14"/>${t.kind ? '<circle class="ring" r="9.5"/>' : ''}<circle class="screw" r="6.5"/><line class="slotl" x1="-3.5" y1="-3.5" x2="3.5" y2="3.5"/></g>` + termLabel(t, d);
+      th += `<g class="${tc}" data-t="${k}" role="button" aria-label="Borne ${esc(t.label || t.id)} de ${esc(c.label)}" transform="translate(${t.x},${t.y})"><circle class="thit" r="14"/>${t.kind ? '<circle class="ring" r="9.5"/>' : ''}<circle class="screw" r="6.5"/><line class="slotl" x1="-3.5" y1="-3.5" x2="3.5" y2="3.5"/></g>` + termLabel(t, d);
     }
     if (th !== e.th) { e.gt.innerHTML = th; e.th = th; }
   }
@@ -614,7 +617,7 @@ function buildPalette() {
       const c = makeComp(d.type, 0, 0, 'pv', d.prefix);
       let terms = '';
       for (const t of d.terminals) terms += `<circle cx="${t.x}" cy="${t.y}" r="6" fill="#d1d5db" stroke="#4b5563" stroke-width="1.5"/>`;
-      h += `<div class="pitem" data-type="${d.type}" data-name="${esc((d.name + ' ' + d.short).toLowerCase())}" title="${esc(d.name)}"><svg viewBox="-10 -10 ${d.w + 20} ${d.h + 20}" preserveAspectRatio="xMidYMid meet">${d.draw(c, d)}${terms}</svg><span>${esc(d.short)}</span></div>`;
+      h += `<div class="pitem" role="button" tabindex="0" aria-label="Ajouter : ${esc(d.name)}" data-type="${d.type}" data-name="${esc((d.name + ' ' + d.short).toLowerCase())}" title="${esc(d.name)}"><svg aria-hidden="true" viewBox="-10 -10 ${d.w + 20} ${d.h + 20}" preserveAspectRatio="xMidYMid meet">${d.draw(c, d)}${terms}</svg><span>${esc(d.short)}</span></div>`;
     }
     h += '</div>';
   }
@@ -624,6 +627,10 @@ $('#psearch').addEventListener('input', (e) => {
   const q = e.target.value.trim().toLowerCase();
   for (const it of document.querySelectorAll('.pitem')) it.hidden = q && !it.dataset.name.includes(q);
   for (const g of document.querySelectorAll('.pgrid')) g.previousElementSibling.hidden = g.hidden = ![...g.children].some((x) => !x.hidden);
+});
+$('#plist').addEventListener('keydown', (e) => {
+  const it = e.target.closest('.pitem');
+  if (it && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); addAtCenter(it.dataset.type); }
 });
 let pal = null;
 $('#plist').addEventListener('pointerdown', (e) => {
@@ -707,6 +714,7 @@ function openHelp() {
   <li>Glissez un composant pour le déplacer ; touchez-le pour voir ses propriétés (calibre, tension de bobine, temporisation…).</li></ul>
   <h3>Exercices</h3><ul><li>Ouvrez un schéma de la bibliothèque, câblez-le, puis <b>✔ Vérifier</b> : l'application essaie votre montage comme un examinateur et indique ce qui ne va pas.</li></ul>
   <h3>Installer sur téléphone</h3><ul><li>Android (Chrome) : menu ⋮ → « Installer l'application ». iPhone (Safari) : bouton Partager → « Sur l'écran d'accueil ». L'application fonctionne ensuite hors connexion.</li></ul>
+  <h3>Vie privée</h3><p>Aucun compte, aucun cookie, aucun traceur : votre montage reste sur votre appareil. <a href="legal.html" style="color:#7cc4fd">Mentions légales, confidentialité et conditions d'utilisation</a>.</p>
   </div>`);
 }
 
@@ -765,13 +773,13 @@ for (const b of document.querySelectorAll('#tools button')) {
 }
 function buildColors() {
   const box = $('#colors');
-  box.innerHTML = `<button class="auto active" data-col="auto" title="${WNAME.auto}">A</button>` +
-    ['marron', 'noir', 'gris', 'bleu', 'vj', 'rouge', 'orange', 'violet', 'blanc'].map((c) => `<button data-col="${c}" title="${esc(WNAME[c])}" style="background:${c === 'vj' ? 'repeating-linear-gradient(45deg,#2e9e3a 0 5px,#f2d21b 5px 10px)' : WCOL[c]}"></button>`).join('');
+  box.innerHTML = `<button class="auto active" data-col="auto" title="${WNAME.auto}" aria-label="Couleur du fil : ${WNAME.auto}" aria-pressed="true">A</button>` +
+    ['marron', 'noir', 'gris', 'bleu', 'vj', 'rouge', 'orange', 'violet', 'blanc'].map((c) => `<button data-col="${c}" title="${esc(WNAME[c])}" aria-label="Couleur du fil : ${esc(WNAME[c])}" aria-pressed="false" style="background:${c === 'vj' ? 'repeating-linear-gradient(45deg,#2e9e3a 0 5px,#f2d21b 5px 10px)' : WCOL[c]}"></button>`).join('');
   box.onclick = (e) => {
     const b = e.target.closest('button');
     if (!b) return;
     color = b.dataset.col;
-    for (const x of box.children) x.classList.toggle('active', x === b);
+    for (const x of box.children) { x.classList.toggle('active', x === b); x.setAttribute('aria-pressed', String(x === b)); }
     hint('Couleur du fil : ' + WNAME[color]);
   };
 }

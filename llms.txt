@@ -1,0 +1,13 @@
+# ÉlectroLab
+
+> Simulateur interactif et gratuit de câblage électrotechnique (France), utilisable dans le navigateur et installable sur mobile (PWA). On pose des appareils, on relie leurs bornes par des fils et le circuit est simulé en temps réel (réseau TT 230/400 V).
+
+- Langue : français. Pas de compte, pas de cookie, aucune donnée personnelle collectée.
+- Usage pédagogique uniquement : ne remplace pas la norme NF C 15-100 ni l'habilitation électrique.
+
+## Pages
+- [Application](./index.html) : plan de câblage, palette de 35 composants, bibliothèque de 17 schémas (va-et-vient, télérupteur, démarrage direct, inversion de sens, étoile-triangle…) avec correction automatique.
+- [Mentions légales, confidentialité, cookies et CGU](./legal.html)
+
+## Code source
+- https://github.com/Svperman/Electrotechnique- (licence MIT). Schémas : js/library.js ; composants : js/components.js.

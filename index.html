@@ -37,13 +37,13 @@
 
   <div class="main">
     <aside id="palette" class="palette">
-      <div class="phead"><b>Composants</b><button class="ibtn close-s" data-close="palette">✕</button></div>
-      <input id="psearch" class="psearch" type="search" placeholder="Rechercher…">
+      <div class="phead"><b>Composants</b><button class="ibtn close-s" data-close="palette" aria-label="Fermer">✕</button></div>
+      <input id="psearch" class="psearch" type="search" placeholder="Rechercher…" aria-label="Rechercher un composant">
       <div id="plist"></div>
     </aside>
 
     <main id="stage" class="stage">
-      <svg id="svg" xmlns="http://www.w3.org/2000/svg">
+      <svg id="svg" xmlns="http://www.w3.org/2000/svg" role="application" aria-label="Plan de câblage : touchez une borne puis une autre pour tirer un fil">
         <defs>
           <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#2c3648" stroke-width="1"/></pattern>
           <pattern id="grid5" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="url(#grid)"/><path d="M100 0H0V100" fill="none" stroke="#34405a" stroke-width="1.5"/></pattern>
@@ -58,23 +58,23 @@
         </g>
       </svg>
       <div id="meter" class="meter" hidden>
-        <div class="mscreen"><span id="mval">— — —</span><small>V ~</small></div>
+        <div class="mscreen"><span id="mval" aria-live="polite">— — —</span><small>V ~</small></div>
         <div class="mhint" id="mhint">Touchez la 1ʳᵉ borne (pointe rouge)</div>
         <button id="mclear" class="sbtn">Effacer</button>
       </div>
       <div id="hint" class="hint"></div>
-      <div id="toasts" class="toasts"></div>
+      <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
       <div class="zoombar">
         <button id="zIn" class="ibtn" aria-label="Zoom avant">＋</button>
         <button id="zOut" class="ibtn" aria-label="Zoom arrière">－</button>
         <button id="zFit" class="ibtn" aria-label="Recentrer">⤢</button>
       </div>
       <button id="fabAdd" class="fab">＋ Composant</button>
-      <button id="fabInfo" class="fab2">ⓘ</button>
+      <button id="fabInfo" class="fab2" aria-label="Propriétés et journal">ⓘ</button>
     </main>
 
     <aside id="inspector" class="inspector">
-      <div class="phead"><b>Propriétés</b><button class="ibtn close-s" data-close="inspector">✕</button></div>
+      <div class="phead"><b>Propriétés</b><button class="ibtn close-s" data-close="inspector" aria-label="Fermer">✕</button></div>
       <div id="insp"></div>
       <div class="phead sub"><b>Journal</b><button id="btnClearLog" class="sbtn">Vider</button></div>
       <div id="log" class="log"></div>
@@ -90,11 +90,13 @@
     <button data-m="reset">⟲ Réinitialiser les états</button>
     <button data-m="install" id="mInstall" hidden>📲 Installer l'application</button>
     <button data-m="help">❓ Aide</button>
+    <a class="mlink" href="legal.html">⚖ Mentions légales &amp; confidentialité</a>
   </div>
   <input type="file" id="fileIn" accept=".json,application/json" hidden>
 
   <dialog id="dlg" class="dlg"><div id="dlgBody"></div></dialog>
 
+  <noscript><p style="padding:20px">ÉlectroLab est un simulateur interactif de câblage électrotechnique : il nécessite JavaScript. <a href="legal.html">Mentions légales et confidentialité</a>.</p></noscript>
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

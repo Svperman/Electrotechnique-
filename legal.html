@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ÉlectroLab – Mentions légales et confidentialité</title>
+  <meta name="description" content="Mentions légales, politique de confidentialité, politique cookies et conditions d'utilisation d'ÉlectroLab.">
+  <meta name="theme-color" content="#151b26">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg: #151b26; --panel: #1c2433; --line: #2f3a50; --text: #e6ebf3; --muted: #b4bfd0; --accent: #7cc4fd; color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    header { background: var(--panel); border-bottom: 1px solid var(--line); padding: 14px 16px; position: sticky; top: 0; }
+    header a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    main { max-width: 760px; margin: 0 auto; padding: 16px 16px 60px; }
+    h1 { font-size: 1.6rem; margin: 8px 0 4px; }
+    h2 { font-size: 1.25rem; margin: 36px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+    h3 { font-size: 1.05rem; margin: 20px 0 6px; }
+    p, li { color: var(--muted); }
+    strong { color: var(--text); }
+    a { color: var(--accent); }
+    nav ul { padding-left: 18px; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .92rem; }
+    th, td { border: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
+    th { background: var(--panel); color: var(--text); }
+    td { color: var(--muted); }
+    .note { background: var(--panel); border-left: 4px solid var(--accent); padding: 10px 14px; border-radius: 8px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <header><a href="./">← Retour à ÉlectroLab</a></header>
+  <main>
+    <h1>Informations légales</h1>
+    <p>Dernière mise à jour : 27 novembre 2026.</p>
+    <p class="note"><strong>En bref :</strong> ÉlectroLab est gratuit, sans compte, sans publicité, sans cookie et sans outil de mesure d'audience. Aucune donnée personnelle n'est collectée par l'application. Vos montages restent sur votre appareil.</p>
+    <nav aria-label="Sommaire">
+      <ul>
+        <li><a href="#mentions">Mentions légales</a></li>
+        <li><a href="#confidentialite">Politique de confidentialité</a></li>
+        <li><a href="#cookies">Politique cookies</a></li>
+        <li><a href="#cgu">Conditions générales d'utilisation</a></li>
+        <li><a href="#accessibilite">Accessibilité</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="mentions">Mentions légales</h2>
+    <h3>Éditeur</h3>
+    <p>ÉlectroLab est un projet personnel non commercial publié par <strong>Svperman</strong> (personne physique, publication à titre non professionnel).
+      Conformément à l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004 (LCEN), l'éditeur non professionnel peut ne communiquer ses coordonnées qu'à l'hébergeur.</p>
+    <p>Contact : via la page du projet <a href="https://github.com/Svperman/Electrotechnique-/issues">github.com/Svperman/Electrotechnique-/issues</a>.</p>
+    <h3>Hébergeur</h3>
+    <p>GitHub, Inc. (service GitHub Pages) – 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis – <a href="https://github.com">github.com</a>.</p>
+    <h3>Propriété intellectuelle</h3>
+    <p>Le code source d'ÉlectroLab est distribué sous <strong>licence MIT</strong> (voir le fichier LICENSE du dépôt). Les schémas proposés sont des montages pédagogiques usuels de l'électrotechnique.</p>
+
+    <h2 id="confidentialite">Politique de confidentialité</h2>
+    <h3>Données collectées par l'application</h3>
+    <p><strong>Aucune.</strong> ÉlectroLab ne demande ni nom, ni e-mail, ni compte, ne contient aucun formulaire et n'envoie aucune donnée à un serveur, à l'éditeur ou à un tiers. Tous les calculs de simulation sont faits dans votre navigateur.</p>
+    <h3>Inventaire complet de ce que le site enregistre ou transmet</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Élément</th><th>Contenu</th><th>Où</th><th>Finalité</th><th>Durée</th></tr></thead>
+      <tbody>
+        <tr><td>Stockage local (<code>localStorage</code>, clé <code>electrolab:v1</code>)</td><td>Votre montage en cours (composants, fils, réglages, zoom). Aucune donnée personnelle.</td><td>Uniquement sur votre appareil</td><td>Retrouver votre travail à la prochaine ouverture</td><td>Jusqu'à ce que vous effaciez les données du site dans votre navigateur</td></tr>
+        <tr><td>Cache hors ligne (service worker)</td><td>Copie des fichiers de l'application (pages, scripts, icônes)</td><td>Uniquement sur votre appareil</td><td>Fonctionner sans connexion</td><td>Remplacé à chaque mise à jour</td></tr>
+        <tr><td>Fichiers <code>.electrolab.json</code></td><td>Montage exporté</td><td>Là où <em>vous</em> l'enregistrez</td><td>Sauvegarde / partage à votre initiative</td><td>Sous votre contrôle</td></tr>
+        <tr><td>Journaux techniques de l'hébergeur</td><td>Adresse IP, date, page demandée, navigateur</td><td>GitHub, Inc.</td><td>Sécurité et fonctionnement du service d'hébergement</td><td>Selon la <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement">politique de confidentialité de GitHub</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>L'éditeur n'a accès ni à vos montages ni aux journaux de l'hébergeur. Aucun outil d'analyse d'audience, de publicité, de réseau social, de police de caractères externe ou de script tiers n'est chargé.</p>
+    <p>La vibration du téléphone (retour tactile lors d'un défaut) utilise une fonction locale du navigateur et ne transmet rien.</p>
+    <h3>Vos droits</h3>
+    <p>Comme aucune donnée personnelle n'est collectée par l'éditeur, il n'y a rien à consulter, rectifier ou supprimer de son côté. Pour effacer ce qui est stocké sur votre appareil : paramètres du navigateur → données du site → supprimer (ou désinstaller l'application).
+      Pour les données traitées par l'hébergeur, adressez-vous à GitHub. Vous pouvez aussi saisir la <a href="https://www.cnil.fr">CNIL</a>.</p>
+
+    <h2 id="cookies">Politique cookies</h2>
+    <p><strong>ÉlectroLab n'utilise aucun cookie</strong>, ni de mesure d'audience, ni publicitaire, ni de réseau social. C'est pourquoi aucun bandeau de consentement n'est affiché.</p>
+    <p>Le stockage local décrit ci-dessus sert uniquement à conserver le montage que vous êtes en train de réaliser. Il est strictement nécessaire au service que vous demandez et ne sert pas à vous suivre. À ce titre, il est exempté de consentement (article 82 de la loi Informatique et Libertés, lignes directrices de la CNIL).</p>
+    <p>Si un outil de mesure d'audience ou un service tiers est ajouté un jour, cette page sera mise à jour et un consentement sera demandé avant tout dépôt.</p>
+
+    <h2 id="cgu">Conditions générales d'utilisation</h2>
+    <h3>Objet</h3>
+    <p>ÉlectroLab est un simulateur pédagogique gratuit de câblage électrotechnique. Son utilisation vaut acceptation des présentes conditions.</p>
+    <h3>Accès</h3>
+    <p>Le service est accessible gratuitement, sans inscription. L'éditeur peut le modifier, l'interrompre ou l'arrêter à tout moment, sans préavis ni indemnité.</p>
+    <h3>Usage pédagogique uniquement – sécurité</h3>
+    <p class="note"><strong>Important :</strong> ÉlectroLab est un outil d'apprentissage. La simulation est simplifiée et ne remplace ni la norme NF C 15-100, ni les notices des fabricants, ni la formation et l'habilitation électrique. Ne réalisez jamais d'intervention sur une installation réelle sur la seule base de cette application. Toute intervention se fait hors tension, par une personne qualifiée et habilitée.</p>
+    <h3>Responsabilité</h3>
+    <p>L'application est fournie « en l'état », sans garantie d'exactitude ou d'absence d'erreur. L'éditeur ne peut être tenu responsable des dommages résultant de son utilisation ou de l'application des montages présentés à une installation réelle.</p>
+    <h3>Vos contenus</h3>
+    <p>Les montages que vous créez vous appartiennent et restent sur votre appareil.</p>
+    <h3>Remboursement</h3>
+    <p>Le service est entièrement gratuit : aucun paiement n'est demandé, il n'y a donc pas de politique de remboursement.</p>
+    <h3>Droit applicable</h3>
+    <p>Les présentes conditions sont soumises au droit français. En cas de litige, une solution amiable sera recherchée avant toute action. À défaut, les tribunaux français seront compétents, sous réserve des règles protectrices du consommateur.</p>
+
+    <h2 id="accessibilite">Accessibilité</h2>
+    <p>Les couleurs de l'interface respectent un contraste d'au moins 4,5:1 (niveau AA des WCAG). Les boutons ont un libellé lisible par les lecteurs d'écran. Le plan de câblage est par nature très visuel ; le multimètre et le panneau des propriétés donnent les valeurs sous forme de texte. Pour signaler une difficulté, utilisez le contact ci-dessus.</p>
+  </main>
+</body>
+</html>

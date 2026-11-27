@@ -1,6 +1,6 @@
 // Service worker : l'application fonctionne hors connexion.
-const CACHE = 'electrolab-v1';
-const FILES = ['./', 'index.html', 'css/app.css', 'js/app.js', 'js/components.js', 'js/engine.js', 'js/solver.js',
+const CACHE = 'electrolab-v2';
+const FILES = ['./', 'index.html', 'legal.html', 'css/app.css', 'js/app.js', 'js/components.js', 'js/engine.js', 'js/solver.js',
   'js/library.js', 'js/checker.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => {
