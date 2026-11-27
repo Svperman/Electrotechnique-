@@ -1,0 +1,12 @@
+{
+  "name": "electrolab",
+  "version": "1.0.0",
+  "description": "Simulateur interactif de câblage électrotechnique (PWA)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node tests/run-tests.mjs"
+  },
+  "license": "MIT"
+}

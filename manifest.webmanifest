@@ -1,0 +1,19 @@
+{
+  "name": "ÉlectroLab – Simulateur de câblage",
+  "short_name": "ÉlectroLab",
+  "description": "Simulateur interactif de câblage électrotechnique : habitat, commande industrielle, moteurs.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#151b26",
+  "theme_color": "#151b26",
+  "categories": ["education", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
