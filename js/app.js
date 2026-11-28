@@ -820,6 +820,33 @@ setInterval(() => {
 window.addEventListener('resize', () => applyView());
 window.addEventListener('beforeunload', save);
 
+// ------------------------------------------------------------ mode hors connexion
+function updateOnline(announce) {
+  const off = !navigator.onLine;
+  $('#offline').hidden = !off;
+  if (announce) toast(off ? '📴 Hors connexion : l\'application continue de fonctionner, votre travail est enregistré sur l\'appareil.' : '🌐 Connexion rétablie.', off ? 'warn' : 'ok');
+}
+window.addEventListener('online', () => updateOnline(true));
+window.addEventListener('offline', () => updateOnline(true));
+updateOnline(false);
+
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const firstInstall = !navigator.serviceWorker.controller;
+  navigator.serviceWorker.register('sw.js').then((reg) => {
+    reg.addEventListener('updatefound', () => {
+      const w = reg.installing;
+      if (!w) return;
+      w.addEventListener('statechange', () => {
+        if (w.state !== 'activated') return;
+        if (firstInstall) {
+          try {
+            if (!localStorage.getItem('electrolab:offline-ready')) {
+              localStorage.setItem('electrolab:offline-ready', '1');
+              toast('✅ Application prête à fonctionner sans internet.', 'ok');
+            }
+          } catch (e) { /* stockage indisponible */ }
+        } else toast('🔄 Nouvelle version téléchargée : elle sera utilisée au prochain lancement.', 'info');
+      });
+    });
+  }).catch(() => {});
 }
